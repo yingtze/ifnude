@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "ifnude"
+version = "1.0.0"
+description = "An AI powered nudity detection library"
+readme = "README.md"
+license = { file = "LICENSE.md" }
+authors = [{ name = "Somdev Sangwan", email = "s0md3v@gmail.com" }]
+requires-python = ">=3.9"
+dependencies = [
+    "pillow>=10.0.0",
+    "opencv-python-headless>=4.8.0",
+    "httpx>=0.24.0",
+    "tqdm>=4.65.0",
+    "scikit-image>=0.21.0",
+    "onnxruntime>=1.16.0",
+    "numpy>=1.24.0",
+]
+
+[project.optional-dependencies]
+gpu = ["onnxruntime-gpu>=1.16.0"]
+dev = ["pytest>=7.0", "ruff>=0.1.0", "mypy>=1.0"]
+
+[project.urls]
+Homepage = "https://github.com/s0md3v/ifnude"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["ifnude*"]
+
+[tool.ruff]
+target-version = "py39"
+line-length = 100
+
+[tool.mypy]
+python_version = "3.9"
+strict = false
+ignore_missing_imports = true
