@@ -56,8 +56,9 @@ def detect(
 
     results: list[Detection] = []
     for box, score, label_idx in zip(boxes[0], scores[0], labels[0]):
-        if score < min_prob:
+        if float(score) < min_prob:
             continue
+        label_idx = int(label_idx)
         if label_idx < 0 or label_idx >= len(classes):
             logger.warning("label_idx %d out of range (%d classes); skipping",
                            label_idx, len(classes))

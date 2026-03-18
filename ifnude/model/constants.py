@@ -14,7 +14,7 @@ CLASSES_PATH = MODEL_FOLDER / "classes"
 # Labels the model emits that we never surface to callers
 IGNORED_LABELS: frozenset[str] = frozenset({"EXPOSED_BELLY"})
 
-# Expected ONNX output tensor names (resolve by name, not by dtype)
+# Actual ONNX output tensor names from the HuggingFace detector model
 OUT_BOXES  = "filtered_detections/map/TensorArrayStack_2/TensorArrayGatherV3:0"
 OUT_SCORES = "filtered_detections/map/TensorArrayStack_1/TensorArrayGatherV3:0"
 OUT_LABELS = "filtered_detections/map/TensorArrayStack/TensorArrayGatherV3:0"

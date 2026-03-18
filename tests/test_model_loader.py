@@ -8,12 +8,13 @@ import pytest
 class TestResolveOutputs:
     def test_resolves_by_name(self):
         from ifnude.model.resolver import resolve_outputs
+        from ifnude.model.constants import OUT_BOXES, OUT_SCORES, OUT_LABELS
         session = MagicMock()
         b = np.array([[[[1,2,3,4]]]], dtype=np.float32)
         s = np.array([[[0.9]]], dtype=np.float32)
         l = np.array([[0]], dtype="int32")
         outs = []
-        for n in ("boxes", "scores", "labels"):
+        for n in (OUT_BOXES, OUT_SCORES, OUT_LABELS):
             m = MagicMock(); m.name = n; outs.append(m)
         session.get_outputs.return_value = outs
         boxes, scores, labels = resolve_outputs(session, [b, s, l])
